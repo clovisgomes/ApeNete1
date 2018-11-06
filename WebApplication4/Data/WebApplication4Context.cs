@@ -14,6 +14,27 @@ namespace WebApplication4.Models
         {
         }
 
-        public DbSet<WebApplication4.Data.Usuario> Usuario { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
+
+        public DbSet<Mesa> Mesas { get; set; }
+
+        public DbSet<MesaUsuario> MesasUsuarios { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<MesaUsuario>()
+                .HasKey(um => new { um.MesaId, um.UsuarioId });
+
+            modelBuilder.Entity<MesaUsuario>()
+                .HasOne(um => um.Mesa)
+                .WithMany(m => m.MesasUsuarios)
+                .HasForeignKey(um => um.MesaId);
+
+            modelBuilder.Entity<MesaUsuario>()
+                .HasOne(um => um.Usario)
+                .WithMany(u => u.MesasUsuarios)
+                .HasForeignKey(um => um.UsuarioId);
+        }
+
     }
 }

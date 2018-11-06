@@ -12,6 +12,7 @@ namespace WebApplication4.Data
         //public int Tipo { get; set; }
 
         public int UsuarioId { get; set; }
+
         [Required(ErrorMessage="Nome é obrigatório")]
         [MaxLength(30, ErrorMessage = "Nome pode conter no máximo 30 letras")]
         public string Nome { get; set; }
@@ -31,5 +32,7 @@ namespace WebApplication4.Data
         public string Bairro { get; set; }
         public string Cidade { get; set; }
         public string Uf { get; set; }
+
+        public ICollection<MesaUsuario> MesasUsuarios { get; set; }
     }
 }
