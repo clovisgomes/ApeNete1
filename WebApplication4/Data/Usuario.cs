@@ -8,6 +8,9 @@ namespace WebApplication4.Data
 {
     public class Usuario
     {
+
+        //public int Tipo { get; set; }
+
         public int UsuarioId { get; set; }
         [Required(ErrorMessage="Nome é obrigatório")]
         [MaxLength(30, ErrorMessage = "Nome pode conter no máximo 30 letras")]
